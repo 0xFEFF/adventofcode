@@ -1,10 +1,13 @@
 def solve_part_1():
     with open('puzzle_input.txt', 'r') as f:
-    datastream = f.readline()
+        datastream = f.readlines()
+        for line in datastream:
+            print(line.replace('\n', ''))
 
 def solve_part_2():
+    pass
     with open('puzzle_input.txt', 'r') as f:
-    datastream = f.readline()
+        datastream = f.readline()
 
 
 if __name__ == "__main__":
