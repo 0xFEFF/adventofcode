@@ -14,14 +14,39 @@ def solution_part_one(data : list[str]):
                 #print(num)
                 sum += int(num)
 
-    print(f"Result is {sum}")
+    print(f"Result part one: {sum}")
+    return sum
+
+def solution_part_two(data : list[str]):
+    sum = 0
+
+    for item in data:
+        x,y = map(int, item.split('-'))
+        for i in range(x,y+1):
+            num = str(i)
+
+            if num[:len(num)//2] == num[len(num)//2:]:
+                #print(num)
+                sum += int(num)
+                continue
+
+            for j in range(len(num)):
+                num_copy = num
+                if (len(num_copy.replace(num[:j], '')) == 0):
+                    sum += int(num)
+
+    print(f"Result part two: {sum}")
+    return sum
+
 
 if __name__ == "__main__":
     print("Day 2: Gift Shop")
 
-    #example_data = read_input('example.txt')
-    #solution_part_one(example_data)
+    example_data = read_input('example.txt')
+    solution_part_one(example_data) 
+    solution_part_two(example_data)
 
     input_data = read_input('input.txt')
     solution_part_one(input_data)
+    solution_part_two(input_data)
 
