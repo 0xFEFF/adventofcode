@@ -7,8 +7,8 @@ def solution_part_one(data : list[str]):
     sum = 0
 
     for item in data:
-        x,y = item.split('-')
-        for i in range(int(x), int(y)+1):
+        x, y = map(int, item.split('-'))
+        for i in range(x, y + 1):
             num = str(i)
             if num[:len(num)//2] == num[len(num)//2:]:
                 #print(num)
@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     #example_data = read_input('example.txt')
     #solution_part_one(example_data)
-    
+
     input_data = read_input('input.txt')
     solution_part_one(input_data)
 
