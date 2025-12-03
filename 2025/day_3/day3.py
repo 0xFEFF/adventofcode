@@ -1,18 +1,16 @@
 def read_input(file_path):
     with open(file_path, 'r') as file:
-        data = file.read().strip().split(',')
+        data = file.read().strip().split('\n')
     return data
 
 def solution_part_one(data: list[str]):
-    joltage = 0
     jolt_max = 0
     for bank in data:
-        print(bank)
+        joltage = 0
         for i in range(len(bank)-1):
             if int(bank[i] + bank[i+1]) > joltage:
                 joltage = int(bank[i] + bank[i+1])
             for j in range(i+1, len(bank)):
-                print(bank[i] + bank[j])
                 if int(bank[i] + bank[j]) > joltage:
                     joltage = int(bank[i] + bank[j])
         
@@ -28,9 +26,10 @@ if __name__ == "__main__":
 
     example_data = read_input('example.txt')
     #solution_part_one(['818181911112111']) 
+    #print(example_data)
     solution_part_one(example_data) 
     solution_part_two(example_data)
 
-    #input_data = read_input('input.txt')
-    #solution_part_one(input_data)
+    input_data = read_input('input.txt')
+    solution_part_one(input_data)
     #solution_part_two(input_data)
