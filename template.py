@@ -1,4 +1,4 @@
-def read_input(file_path):
+def read_input(file_path: str) -> list[str]:
     with open(file_path, 'r') as file:
         data = file.read().strip().split(',')
     return data
