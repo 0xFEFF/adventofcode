@@ -5,10 +5,10 @@ def read_input(file_path: str) -> tuple[list[str], list[str]]:
     return data[0].split('\n'), data[1].split("\n")
 
 def check_id_in_ids(id: str, ids: list[str]) -> bool:
-    print(id)
+    #print(id)
     for i in range(len(ids)):
         start, end = map(int, ids[i].split("-"))
-        print(range(start, end+1))
+        #print(range(start, end+1))
         if int(id) in range(start, end+1):
             return True
     return False
@@ -24,16 +24,25 @@ def solution_part_one(ids: list[str], ingredients: list[str]):
 
 
 def solution_part_two(ids: list[str]):
-    amount_ids = []
-
+    ranges = []
     for id_range in ids:
         start, end = map(int, id_range.split("-"))
-        print(start, end, end - start)
-        for i in range(start, end +1):
-            if i not in amount_ids:
-                amount_ids.append(i)
+        #print(start, end, end - start)
+        ranges.append((start, end))
+    
+    ranges = sorted(ranges)
 
-    print(f"amount valid ids {len(amount_ids)}")
+    sum = 0 
+    cur = -1
+    for s,e in ranges:
+        if cur >= s:
+            s = cur + 1
+        if s <= e:
+            sum += e-s+1
+        cur = max(cur, e)
+
+
+    print(f"amount valid ids {sum}")
 
 
 if __name__ == "__main__":
@@ -41,8 +50,8 @@ if __name__ == "__main__":
 
     id_ranges, ingredients = read_input('example.txt')
     #solution_part_one(id_ranges, ingredients) 
-    solution_part_two(id_ranges)
+    #solution_part_two(id_ranges)
 
     id_ranges, ingredients = read_input('input.txt')
-    #solution_part_one(id_ranges, ingredients)
-    #solution_part_two(id_ranges)
+    solution_part_one(id_ranges, ingredients)
+    solution_part_two(id_ranges)
