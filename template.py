@@ -1,13 +1,8 @@
 def read_input(file_path: str) -> list[str]:
-    """
-    Reads the input file and returns a list of strings.
-    If the file contains multiple lines, splits by newline.
-    If the file contains a single line, splits by comma.
-    """
     with open(file_path, 'r') as file:
         data = file.read().strip()
     if '\n' in data:
-        return data.split('\n')
+        return data.splitlines()
     elif ',' in data:
         return data.split(',')
     else:
